@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <title th:text="${titulo}"></title>
+    </head>
+    <body>
+        <h1 th:text="${titulo}"></h1>
+
+        <form th:action="@{/formulario}" th:object="${cliente}" method="post">
+            <table class="table-cell">
+                <tbody>
+                    <tr>
+                        <th>Nombre:</th>
+                        <th><input type="text" th:field="*{nombre}" class="form-control" required></th>
+                    </tr>
+                    <tr>
+                        <th>Apellido:</th>
+                        <th><input type="text" th:field="*{apellido}" class="form-control" required></th>
+                    </tr>
+                    <tr>
+                        <th>E-Mail:</th>
+                        <th><input type="email" th:field="*{email}" class="form-control" required></th>
+                    </tr>
+                    <tr>
+                        <th>Fecha:</th>
+                        <th><input type="date" th:field="*{creadoEn}" class="form-control" required></th>
+                    </tr>
+                    <tr>
+                        <th><input type="submit" value="Crear Cliente"></th>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="hidden" th:field="*{id}">
+        </form>
+    </body>
+</html>

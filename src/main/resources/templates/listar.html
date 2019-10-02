@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <title th:text="${titulo}"></title>
+    </head>
+    <body>
+        <h1 th:text="${titulo}"></h1>
+
+        <a th:href="@{/formulario}">Crear Cliente</a>
+
+        <table class="table-cell">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.id}"></td>
+                    <td th:text="${cliente.nombre}"></td>
+                    <td th:text="${cliente.apellido}"></td>
+                    <td th:text="${cliente.email}"></td>
+                    <td th:datetime="${cliente.creadoEn}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
