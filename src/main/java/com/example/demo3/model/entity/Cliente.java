@@ -1,6 +1,10 @@
 package com.example.demo3.model.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -32,6 +36,15 @@ public class Cliente {
         this.apellido = apellido;
         this.email = email;
         this.creadoEn = creadoEn;
+    }
+
+    public void conversionStringDate(String fechaTexto){
+        SimpleDateFormat formato=new SimpleDateFormat("dd-MMM-yyyy");
+        try {
+            this.creadoEn = formato.parse(fechaTexto);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public Long getId() {
@@ -66,6 +79,7 @@ public class Cliente {
         this.email = email;
     }
 
+    @DateTimeFormat(pattern="dd-MMM-YYYY")
     public Date getCreadoEn() {
         return creadoEn;
     }
